@@ -12,10 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.core.app.NotificationCompat
-import java.nio.file.attribute.AclEntry.Builder
 
 class MainActivity : AppCompatActivity() {
-    val NORMAL_CHANNEL = "NORMAL_CHANNEL"
+    private val NORMAL_CHANNEL = "NORMAL_CHANNEL"
     private lateinit var notificationManager : NotificationManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +79,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     private fun openBrowser(){
         val a2 = Intent(this, MainActivity2::class.java)
         val pa2 = PendingIntent.getActivity(
@@ -99,6 +99,8 @@ class MainActivity : AppCompatActivity() {
         notificationManager.notify(R.id.GOOGLE_NOTIFICATION_ID, builder.build())
 
     }
+
+
 
     private fun complexNotif(){
         val browser = Intent(Intent.ACTION_VIEW)
