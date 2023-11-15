@@ -22,19 +22,13 @@ class MainActivity : AppCompatActivity() {
 
         notificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val name = resources.getString(R.string.NOT_IMPORTANT_CHANNEL_NAME)
-            val channel = NotificationChannel(
-                NORMAL_CHANNEL,
-                name,
-                NotificationManager.IMPORTANCE_LOW
-            )
-            channel.description = resources.getString(R.string.NOT_IMPORTANT_CHANNEL_DESCRIPTION)
-            channel.enableVibration(false)
-
-            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
+        //создание канала
+        val channel = NotificationChannel(
+            NORMAL_CHANNEL,
+            resources.getString(R.string.NOT_IMPORTANT_CHANNEL_NAME),
+            NotificationManager.IMPORTANCE_LOW //низкий приоритет
+        )
+        notificationManager.createNotificationChannel(channel)
 
         val but = findViewById<Button>(R.id.butAdd)
         val butDel = findViewById<Button>(R.id.butDel)
@@ -97,7 +91,6 @@ class MainActivity : AppCompatActivity() {
             .setAutoCancel(true)
 
         notificationManager.notify(R.id.GOOGLE_NOTIFICATION_ID, builder.build())
-
     }
 
 
